@@ -1,8 +1,9 @@
-source :rubygems
+source "https://rubygems.org"
+ruby "1.9.3"
 
 # PostgreSQL driver
 gem 'pg'
-gem 'ruby', '1.9.3'
+#gem 'ruby', '1.9.3p194'
 
 # Sinatra driver
 gem 'sinatra'
