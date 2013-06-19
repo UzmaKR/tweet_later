@@ -20,7 +20,7 @@ get '/auth' do
   session.delete(:request_token)
 
   # at this point in the code is where you'll need to create your user account and store the access token
-  @user = User.find_by_oauth_token_and_oauth_secret(@access_token.params[:oauth_token], @access_token.params[:oauth_secret] )
+  @user = User.find_by_oauth_token(@access_token.params[:oauth_token])
   unless @user
     @user = User.create(username: @access_token.params[:screen_name],
                         oauth_token: @access_token.params[:oauth_token],
