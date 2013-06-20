@@ -13,13 +13,13 @@ get '/sign_out' do
 end
 
 get '/status/:job_id' do
-  #returns the status of a job to an AJAX call
+  job_is_complete(params[:job_id])
 end
 
 post '/tweet' do
   uzma = User.find(1)
-  uzma.tweet(params[:status])
-
+  p params[:tweet]
+  job_id = uzma.tweet(params[:tweet])
 end
 
 get '/auth' do

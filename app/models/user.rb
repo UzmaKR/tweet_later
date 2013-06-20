@@ -4,7 +4,5 @@ class User < ActiveRecord::Base
   	tweet = tweets.create!(:status => status)
   	TweetWorker.perform_async(tweet.id)
   end
-  #click submit button
-  #tweet gets forwarded to sidekiq
-  #
+  
 end

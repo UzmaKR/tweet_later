@@ -15,7 +15,7 @@
       </p>
       <p>
         <button><a href="/sign_out">Sign Out</a></button>
-        <form>
+        <form method="post" action="/tweet">
           <input type="text" name="tweet" placeholder="type a tweet" required>
           <input type="submit" value="Submit Tweet">
         </form>
@@ -24,5 +24,6 @@
   <% else %>
     <button><a href="/sign_in">Sign In with Twitter</a></button>
   <% end %>
+  <p id="ajax_response"><p>
   
 </div>

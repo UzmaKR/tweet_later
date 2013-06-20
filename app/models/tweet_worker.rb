@@ -6,14 +6,13 @@ class TweetWorker
   	user = tweet.user
 
   	#set up Twitter oauth client here
-  	p user.oauth_token
-  	p user.oauth_secret
 
   	client = Twitter::Client.new(
   		oauth_token: user.oauth_token,
   		oauth_token_secret: user.oauth_secret)
-  	p client.consumer_key
-  	p client.consumer_secret
+  	
+    sleep(rand(10))
+
   	client.update(tweet.status)
   	#actually make API call
   	#Note: this does not have access to controller,view
