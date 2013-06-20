@@ -1,9 +1,10 @@
 source "https://rubygems.org"
-ruby "1.9.3"
+#ruby "1.9.3"
 
 # PostgreSQL driver
 gem 'pg'
-#gem 'ruby', '1.9.3p194'
+gem 'sidekiq'
+gem 'redis'
 
 # Sinatra driver
 gem 'sinatra'
