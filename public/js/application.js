@@ -4,7 +4,7 @@ $(document).ready(function() {
     isJobDone: "false"
   };
 
-  function jobIsDone(jid) {
+  /*function jobIsDone(jid) {
     console.log("got into jobIsDone");
     $.ajax({
       type: 'GET',
@@ -13,7 +13,7 @@ $(document).ready(function() {
         jobStatus.isJobDone = data;
         console.log(jobStatus.isJobDone);
     });
-  }
+  }*/
 
 
   $('form').on('submit', function(evt) {
