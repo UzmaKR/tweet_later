@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   has_many :tweets
   def tweet(status)
-  	tweet = tweets.create!(:status => status)
-  	TweetWorker.perform_async(tweet.id)
+  	self.tweets << Tweet.create!(:status => status)
+  	TweetWorker.perform_async(self.tweets.last.id)
   end
   
 end

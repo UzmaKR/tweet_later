@@ -1,36 +1,39 @@
 $(document).ready(function() {
 
   var jobStatus = {
-    isJobDone: false
+    isJobDone: "false"
   };
 
-  function job_is_done(jid) {
+  function jobIsDone(jid) {
+    console.log("got into jobIsDone");
     $.ajax({
       type: 'GET',
       url: '/status/' + jid
     }).done(function(data){
-        console.log(data);
         jobStatus.isJobDone = data;
+        console.log(jobStatus.isJobDone);
     });
   }
 
 
   $('form').on('submit', function(evt) {
     evt.preventDefault();
-    console.log("got in!!");
     $.ajax({
       type: 'POST',
       url: '/tweet',
-      data: $(this).serialize
+      data: $(this).serialize()
     }).done(function(jid) {
-      console.log(jid);
-       $('#ajax_response').text("Got job ID" + jid);
-       // var job_done = false;
-       // job_done = job_is_done(jid);
-       job_is_done(jid);
-       // while (job_done !== true){
-        // setTimeout(job_done = job_is_done(jid), 1000);
-       // } 
+        var chkStatus = setInterval(function() {
+          $.ajax({
+          type: 'GET',
+          url: '/status/' + jid
+          }).done(function(data) {
+            if (data == "true") {
+              clearInterval(checkStatus);
+            }
+          });
+        }, 1000);
       });
   });
 });
+
